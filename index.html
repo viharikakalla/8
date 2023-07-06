@@ -1,0 +1,575 @@
+<!DOCTYPE html><html><head>
+      <title>8051Timmers</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\vihar\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.8\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      <link rel="stylesheet" href="file:///c:\Users\vihar\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.8\node_modules\@shd101wyy\mume\dependencies\font-awesome\css\font-awesome.min.css">
+      
+      <script type="text/javascript" src="file:///c:\Users\vihar\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.8\node_modules\@shd101wyy\mume\dependencies\mermaid\mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="timers-of-8051">TIMERS of 8051</h1>
+
+<p><i class="fa fa-star" aria-hidden="true"></i> Timmers are used to produce a delay in the program.<br>
+<i class="fa fa-star" aria-hidden="true"></i> Timers are of two types :<br>
+1.HARDWARE - T0,T1<br>
+2.SOFTWARE - NOP (nop is written in program)<br>
+<i class="fa fa-star" aria-hidden="true"></i> Two timers T0,T1 are used to produce <code>Two delays</code>.<br>
+<i class="fa fa-star" aria-hidden="true"></i> Each timer is further divided into the following.</p>
+<div class="mermaid">graph TB
+T0 --8 BIT--&gt; TH0;
+T0 --8 BIT--&gt; TL0;
+T1 --8 BIT--&gt; TH1;
+T1 --8 BIT--&gt; TL1;
+</div><p><i class="fa fa-star" aria-hidden="true"></i> For every clock pulse the count will be incremented.<br>
+<img src="https://quick-learn.in/wp-content/uploads/2021/05/t4.jpg" alt="time"></p>
+<p><i class="fa fa-star" aria-hidden="true"></i> The count is calculated bu using the formula :<br>
+<code>Count to be loaded = MAX. Count - Desired Count + 1</code><br>
+<i class="fa fa-star" aria-hidden="true"></i> As soon as the counting is done The <code>Timer overflow</code> flag becomes <code>1</code>.</p>
+<ul>
+<li>Here flags are used to store the <code>PENDING</code> status of interrupts.</li>
+</ul>
+<p>&#x2B50;&#xFE0F; <strong>TIMERS :</strong></p>
+<ul>
+<li>In &quot;TIMERS&quot; the count have to done within the given time.</li>
+<li>It uses oscillator frequency of <mark>1MHz</mark>  to count .<br>
+<code>i.e., 12MHz/12 = 1MHz</code>,Hence its frequency cannot be changed.</li>
+</ul>
+<p>&#x2B50;&#xFE0F; <strong>COUNTERS :</strong></p>
+<ul>
+<li>Time required to complete the given count .</li>
+<li>In Counters we will connect T0,T1 &quot;EXTERNALLY&quot; , hence its frequency can be changed.</li>
+</ul>
+<p><strong>Difference between counter and timer :</strong></p>
+<table>
+<thead>
+<tr>
+<th>TIMER</th>
+<th>COUNTER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>produce delay</td>
+<td>just counts</td>
+</tr>
+<tr>
+<td>CLK pulse freq. is FIXED</td>
+<td>CLX pulse freq. is VARIABLE</td>
+</tr>
+<tr>
+<td>T0,T1 uses <mark>INTERNAL CLX</mark></td>
+<td>T0,T1 uses <mark>EXTERNAL CLK</mark></td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="sfrs-of-timer--">SFR&apos;s of timer :-</h3>
+
+<p>&#x2B50;&#xFE0F; <strong>TCON :</strong>(8-bits)<br>
+<strong>TCON - Timer control</strong></p>
+<table>
+<thead>
+<tr>
+<th>TF1</th>
+<th>TR1</th>
+<th>TF0</th>
+<th>TR0</th>
+<th></th>
+<th>IE1</th>
+<th>IT1</th>
+<th>IE0</th>
+<th>IT0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>First 4 bits belongs to Timer and last 4 bits belong to INTERRUPTS</strong></li>
+<li><strong>TF1,TF0</strong> - <code>Timer overflow flags</code>
+<ul>
+<li>these are timer overflow flags for T0,T1.</li>
+<li>these flags are AUTOCLEARED .</li>
+</ul>
+</li>
+<li><strong>TR1,TR0</strong> -  <code>Timer run bits</code>
+<ul>
+<li>TRx = 1 (RUN).</li>
+<li>TRx = 0 (STOP).</li>
+<li>these are bit addressable and can be written in the program.</li>
+</ul>
+</li>
+<li><strong>IE1,IE0</strong> - <code>Interrupt External</code>
+<ul>
+<li>As soon as an interrupt is occured their corresponding flags are &quot;SET&quot; (1).</li>
+</ul>
+</li>
+<li><strong>IT1,IT0</strong> - <code>Interrupt Triggered</code>
+<ul>
+<li>these are bit addressable we can select the type of TRIGGER we want in the clk pulse .</li>
+<li>ITx = 1 (EDGE).</li>
+<li>Itx = 0 (LEVEL).</li>
+</ul>
+</li>
+</ul>
+<p>&#x2B50;&#xFE0F; <strong>TMOD :</strong> (8-bits)<br>
+<strong>TMOD - Timer mode</strong></p>
+<table>
+<thead>
+<tr>
+<th>gate</th>
+<th>c/<span style="text-decoration:overline">t</span></th>
+<th>M1</th>
+<th>M0</th>
+<th></th>
+<th>gate</th>
+<th>c/<span style="text-decoration:overline">t</span></th>
+<th>M1</th>
+<th>M0</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ul>
+<li><strong>First 4 bits belongs to T1 and last 4 bits belong to T2</strong></li>
+<li><strong>GATE</strong>
+<ul>
+<li>this bit is used to connect EXTERNAL button to <sub>INT0,</sub>INT1.</li>
+<li>When button is connected to INTx,then we cannot send an interrupt.</li>
+<li>1 = counting is controlled by ~INTx.</li>
+<li>0 = counting is independent of ~INTx.</li>
+</ul>
+</li>
+<li><strong>c/<span style="text-decoration:overline">t</span></strong>
+<ul>
+<li>c/<span style="text-decoration:overline">t</span> = 1 (counter)</li>
+<li>c/<span style="text-decoration:overline">t</span> = 0 (timer)</li>
+</ul>
+</li>
+<li><strong>M1,M0</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Modes</th>
+<th>M1</th>
+<th>M0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>M1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>M2</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>M3</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.M0 : 13-bit timer count</strong></p>
+<div class="mermaid">graph LR
+a(CLK from i/p stage ) --8-bit--&gt; b(TLX);
+b --8-bit--&gt; c(THX);
+c --&gt; d(TFX);
+d --&gt; 1(INT);
+</div><blockquote>
+<ul>
+<li>For every clk pulse TL is incremented.</li>
+<li>Once it reaches its max. limit</li>
+<li>TH will be incremented.Once it reaches its max. limit.</li>
+<li>TF is incremented  and then sends an interrupt .</li>
+</ul>
+</blockquote>
+<ul>
+<li><code>Max. = 8k byte</code></li>
+<li><code>Created to divide frequency with 32</code></li>
+</ul>
+<p><strong>2.M1 : 16-bit timer/counter</strong></p>
+<div class="mermaid">graph LR
+a(CLK from i/p stage ) --8-bit--&gt; b(TLX);
+b --8-bit--&gt; c(THX);
+c --&gt; d(TFX);
+d --&gt; 1(INT);
+</div><blockquote>
+<ul>
+<li>For every clk pulse TL is incremented.</li>
+</ul>
+</blockquote>
+<ul>
+<li>Once it reaches its max. limit</li>
+<li>TH will be incremented.Once it reaches its max. limit.</li>
+<li>TF is incremented  and then sends an interrupt .</li>
+<li><code>Max. = 64k byte</code></li>
+<li><code>Used to produce DELAY</code></li>
+</ul>
+<p><strong>3.M2 : 8-bit timer/counter</strong></p>
+<blockquote>
+<ul>
+<li>For every clk pulse TL is incremented.</li>
+<li>Once it reaches its max. limit .</li>
+<li>the count given in TLx RELOADS and START counting again with the same i/p given.</li>
+<li>TF is incremented  and then sends an interrupt .</li>
+</ul>
+</blockquote>
+<ul>
+<li><code>It is a continous mode</code></li>
+</ul>
+<p><strong>4.M3 : 2,8-bit Timers using T0</strong></p>
+<div class="mermaid">graph LR
+a(CLK from i/p stage) --8-bit--&gt; b(TL0) ;
+b --&gt; TF0;
+1(fosc/12) --8-bit--&gt; 2(TH0) ;
+2 --&gt; TF1;
+</div><blockquote>
+<ul>
+<li>For every clk pulse TL is incremented.</li>
+<li>Once it reaches its max. limit. It increments TF0.</li>
+<li>TF0 is incremented  and then sends an interrupt .</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>For every clk pulse TH is incremented.</li>
+<li>Once it reaches its max. limit. It increments TF1.</li>
+<li>TF1 is incremented  and then sends an interrupt .</li>
+</ul>
+</blockquote>
+<p>&#x2B50;&#xFE0F; <strong>Delay Program :</strong></p>
+<pre data-role="codeBlock" data-info="ASM" class="language-asm"><code>MAIN : CLR P1.2
+       ACALL DELAY 
+       SETB P1.2
+       ACALL DELAY
+       SJMP MAIN
+DELAY : MOV TMOD,#01H
+        MOV TL0,#0CH
+        MOV TH0,#0FEH
+        MOV TCON,#10H
+WAIT : JNB TF0,WAIT
+       CLR TF0
+       CLR TR0
+
+RET
+</code></pre>
+      </div>
+      
+      
+    
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.querySelectorAll('.mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+  
+    </body></html>
